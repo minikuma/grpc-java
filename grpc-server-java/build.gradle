@@ -1,0 +1,66 @@
+buildscript {
+    ext {
+        protobufPluginVersion = '0.8.14'
+        grpcVersion =  '1.35.0'
+        protobufVersion =  '3.14.0'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.google.protobuf:protobuf-gradle-plugin:${protobufPluginVersion}"
+    }
+}
+
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'com.google.protobuf' version "${protobufPluginVersion}"
+}
+
+group 'me.minikuma'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:${protobufVersion}"
+
+        // Set the location of generated source code by protoc compiler
+        generatedFilesBaseDir = "$projectDir/gen-src"
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
+}
+
+// Add source dir for generated source code of gRPC
+sourceSets {
+    main {
+        java {
+            srcDirs 'gen-src/main/java'
+            srcDirs 'gen-src/main/grpc'
+        }
+    }
+}
+
+dependencies {
+    implementation "io.grpc:grpc-netty:${grpcVersion}"
+    implementation "io.grpc:grpc-protobuf:${grpcVersion}"
+    implementation "io.grpc:grpc-stub:${grpcVersion}"
+    compileOnly 'org.apache.tomcat:annotations-api:6.0.53' // necessary for Java 9+
+}
+
+test {
+    useJUnitPlatform()
+}
