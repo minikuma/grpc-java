@@ -27,7 +27,7 @@ public class HelloGrpcService extends HelloServiceGrpc.HelloServiceImplBase {
 
         // 응답 메시지 생성
         HelloResponse response = HelloResponse.newBuilder()
-                .setWelcomeMessage("굿")
+                .setWelcomeMessage("gRPC")
                 .build();
 
         // 응답 전송
