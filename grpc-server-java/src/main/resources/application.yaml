@@ -1,8 +1,6 @@
 server:
-  port: 9000
-spring:
-  application:
-    name: product
+  port: 8000
 grpc:
   server:
-    port: 54321
+    port: 9090
+    address: 127.0.0.1

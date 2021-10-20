@@ -12,4 +12,13 @@
 * Installation
   * ```./gradle build```
   * ````main()```` 메서드 실행
+---    
+**(2) V2 Version**
+* WEB Server 구현
+* Library
+  * ````grpc-client-spring-boot-starter````
+  * ```grpc-spring-boot-starter```
+* Installation
+  * ````./gradlew clean bootRun ````   
+  
 ---

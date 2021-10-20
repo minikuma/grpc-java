@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_outer_classname = "ProductGrpcProto";
+
+package me.minikuma.v2;
+
+message ProductRequest {
+  int64 product_id = 1;
+}
+
+message ProductResponse {
+  int64 id = 1;
+  string name = 2;
+  int32 price = 3;
+  int32 quantity = 4;
+}
+
+service ProductService {
+  rpc getProductById (ProductRequest) returns (ProductResponse) {}
+}
