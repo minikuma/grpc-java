@@ -6,7 +6,6 @@ import me.minikuma.v2.adaptor.out.ProductAdaptor;
 import me.minikuma.v2.dao.in.OrderRequest;
 import me.minikuma.v2.dao.in.OrderResponse;
 import me.minikuma.v2.dao.out.ProductResponseDto;
-import me.minikuma.v2.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -16,7 +15,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RequiredArgsConstructor
 public class OrderService {
 
-    private final OrderRepository orderRepository;
     private final ProductAdaptor productAdaptor;
 
     public OrderResponse insertOrder(OrderRequest request) {
@@ -26,14 +24,13 @@ public class OrderService {
         ProductResponseDto productById = productAdaptor.getProductById(request.getProductId());
 
         // 주문 만들기
-        OrderResponse response = OrderResponse.builder()
+
+        return OrderResponse.builder()
                 .orderId(orderId.incrementAndGet())
                 .productId(productById.getId())
                 .productName(productById.getName())
                 .productPrice(productById.getPrice() * request.getQuantity())
                 .productQuantity(request.getQuantity())
                 .build();
-
-        return response;
     }
 }
