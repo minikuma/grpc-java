@@ -1,4 +1,5 @@
 buildscript {
+    // managed version
     ext {
         protobufPluginVersion = '0.8.14'
         grpcVersion = '1.35.0'
@@ -12,6 +13,7 @@ buildscript {
     }
 }
 
+// 플러그인
 plugins {
     id 'java'
     id 'java-library'
@@ -23,8 +25,14 @@ plugins {
 group 'me.minikuma'
 version '1.0-SNAPSHOT'
 
+// 레파지토리
 repositories {
     mavenCentral()
+}
+
+// 실행
+bootJar {
+    mainClassName = 'me.minikuma.Application'
 }
 
 protobuf {
