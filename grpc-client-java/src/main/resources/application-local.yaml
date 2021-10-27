@@ -1,0 +1,32 @@
+server:
+  port: 8001
+---
+# gRPC Client
+grpc:
+  client:
+    blockingStub:
+      address: static://127.0.0.1:9090
+      negotiationType: PLAINTEXT
+---
+# gRPC mybatis
+mybatis:
+  type-aliases-package: me.minikuma.v2.domain
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 30
+  mapper-locations: classpath:mapper/*.xml
+---
+# datasource
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    hikari:
+      auto-commit: false
+      jdbc-url: jdbc:h2:mem:testdb
+      driver-class-name: org.h2.Driver
+      username: sa
+      password:
+---

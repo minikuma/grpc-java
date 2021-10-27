@@ -1,8 +1,0 @@
-server:
-  port: 8001
----
-grpc:
-  client:
-    blockingStub:
-      address: static://127.0.0.1:9090
-      negotiationType: PLAINTEXT

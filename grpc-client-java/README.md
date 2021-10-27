@@ -18,7 +18,9 @@
 * Library
   * ````grpc-client-spring-boot-starter````
   * ```grpc-spring-boot-starter```
+  * ```mybatis-spring-boot-starter```
 * Installation
   * ````./gradlew clean bootRun ````   
-  
+* Database
+  * H2 Embedded Database
 ---
