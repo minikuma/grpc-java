@@ -14,7 +14,10 @@
   * ````main()```` 메서드 실행
 ---    
 **(2) V2 Version**
-* WEB Server 구현
+* 요구사항 
+  * 주문(Order) 시스템 구현
+  * 주문 Database Access (주문 데이터 생성, 조회)
+  * External Service Access (상품 정보 조회)
 * Library
   * ````grpc-client-spring-boot-starter````
   * ```grpc-spring-boot-starter```
@@ -23,4 +26,5 @@
   * ````./gradlew clean bootRun ````   
 * Database
   * H2 Embedded Database
+
 ---

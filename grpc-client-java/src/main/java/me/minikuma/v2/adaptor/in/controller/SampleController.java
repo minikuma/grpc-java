@@ -14,7 +14,7 @@ public class SampleController {
     private final SampleService sampleService;
 
     @GetMapping
-    public String getString() {
+    public String getString() throws InterruptedException {
         return sampleService.getString();
     }
 }
